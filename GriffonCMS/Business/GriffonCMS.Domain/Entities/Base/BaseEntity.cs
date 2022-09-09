@@ -9,5 +9,6 @@ namespace GriffonCMS.Domain.Entities.Base;
 public class BaseEntity<TPK> : IBaseEnitity<TPK>
     where TPK : notnull
 {
-    public TPK Id { get; set; }
+    public virtual TPK Id { get; set; }
+    
 }
