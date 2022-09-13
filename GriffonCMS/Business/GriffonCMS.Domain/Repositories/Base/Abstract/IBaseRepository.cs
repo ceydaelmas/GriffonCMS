@@ -1,4 +1,5 @@
 ﻿using System.Linq.Expressions;
+using GriffonCMS.Domain.Entities.Admin;
 
 namespace GriffonCMS.Domain.Repositories.Base.Abstract;
 
@@ -9,6 +10,8 @@ public interface IBaseRepository<TEntity, TPK>
     Task DeleteByIdAsync(TPK id, CancellationToken cancellationToken = default);
     Task DeleteAsync(Expression<Func<TEntity, bool>> where, CancellationToken cancellationToken = default);
     Task<IEnumerable<TEntity>> GetAllAsync(CancellationToken cancellationToken = default);
+ 
+
     Task<TEntity> GetByExpressionAsync(Expression<Func<TEntity, bool>> where, CancellationToken cancellationToken = default);
     Task<TEntity> GetByIdAsync(TPK id, CancellationToken cancellationToken = default);
     Task<IEnumerable<TEntity>> GetManyAsync(Expression<Func<TEntity, bool>> where, CancellationToken cancellationToken = default);

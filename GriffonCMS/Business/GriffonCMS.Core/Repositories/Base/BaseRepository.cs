@@ -1,6 +1,7 @@
 ﻿using System.Linq.Expressions;
 using GriffonCMS.Core.Context.EFContext;
 using GriffonCMS.Domain.Entities.Base;
+using GriffonCMS.Domain.Entities.Blog;
 using GriffonCMS.Domain.Repositories.Base.Abstract;
 using Microsoft.EntityFrameworkCore;
 
@@ -90,6 +91,7 @@ public class BaseRepository<TEntity, TPK> : IBaseRepository<TEntity, TPK>
        
             return _dbContext.Set<TEntity>().SingleOrDefault(filter);
         }
-    }
+
+}
  #endregion
 
