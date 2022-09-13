@@ -16,4 +16,5 @@ public interface IAuthService
     IResult UserExists(string email);
     IDataResult<AccessToken> CreateAccessToken(AdminEntity admin);
 
+
 }
