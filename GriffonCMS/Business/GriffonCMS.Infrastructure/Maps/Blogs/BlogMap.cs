@@ -24,6 +24,7 @@ public class BlogMap : Profile
         CreateMap<BlogEntity, AddCategoryToBlogCommand>().ReverseMap();
 
         CreateMap<BlogEntity, GetBlogQuery>().ReverseMap();
+        CreateMap<BlogEntity, GetBlogByIdQuery>().ReverseMap();
         CreateMap<BlogEntity, GetBlogDto>().ReverseMap();
     }
 }

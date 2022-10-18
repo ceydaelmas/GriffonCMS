@@ -91,4 +91,5 @@ public class AuthManager : IAuthService
         }
         return new SuccessResult(true,"success exists değil");
     }
+
 }

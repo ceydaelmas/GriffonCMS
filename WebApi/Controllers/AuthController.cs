@@ -39,6 +39,7 @@ public class AuthController : ControllerBase
         }
         var registerResult = _authService.Register(registerRequest);
         var result = _authService.CreateAccessToken(registerResult.Data);
+
         if (result.Success)
         {
             return Ok(result.Data);

@@ -4,12 +4,15 @@ using GriffonCMS.Infrastructure.Command.Categories;
 using GriffonCMS.Infrastructure.Command.Users;
 using GriffonCMS.Infrastructure.Queries.Blogs;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebApi.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
+[Authorize]
+
 public class BlogController : ControllerBase
 {
 
@@ -42,9 +45,16 @@ public class BlogController : ControllerBase
     [HttpGet]
     public async Task<IActionResult> Get()
     {
-        var query = new GetBlogQuery();
-        return Ok(await Mediator.Send(query));
+       Guid userIdToken= Guid.Parse(this.User.Claims.First(i => i.Type == "Id").Value);
+        return Ok(await Mediator.Send(new GetBlogByIdQuery { UserId = userIdToken }));
+    
     }
+    //[HttpGet]
+    //public async Task<IActionResult> Get()
+    //{
+    //    var query = new GetBlogByIdQuery();
+    //    return Ok(await Mediator.Send(query));
+    //}
     [HttpPut("{id}")]
     //[Authorize]
     public async Task<IActionResult> Put(Guid id, UpdateBlogCommand command)
